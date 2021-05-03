@@ -2,13 +2,16 @@ import librosa, librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 
-file = "blues.00000.wav"
+genre = "rock"
+genreCapital = "Rock"
+file = "{}.00000.wav".format(genre)
 
 # waveforms
 signal, sr = librosa.load(file, sr=22050) # sr * T (duration) -> 22050 * 30 seconds
 librosa.display.waveplot(signal, sr=sr)
 plt.xlabel("Time")
 plt.ylabel("Amplitude")
+plt.title("{} waveforms".format(genreCapital))
 plt.show()
 
 # fft -> spectrum
@@ -23,6 +26,7 @@ left_magnitude = magnitude[:int(len(frequency) / 2)]
 plt.plot(left_frequency, left_magnitude)
 plt.xlabel("Frequency")
 plt.ylabel("Magnitude")
+plt.title("{} FFT".format(genreCapital))
 plt.show()
 
 # stft -> spectogram
@@ -39,6 +43,7 @@ librosa.display.specshow(log_spectogram, sr=sr, hop_length=hop_length)
 plt.xlabel("Time")
 plt.ylabel("Frequency")
 plt.colorbar()
+plt.title("{} STFT".format(genreCapital))
 plt.show()
 
 # MFCCs
@@ -46,5 +51,6 @@ MFFCs = librosa.feature.mfcc(signal, n_fft=n_fft, hop_length=hop_length, n_mfcc=
 librosa.display.specshow(MFFCs, sr=sr, hop_length=hop_length)
 plt.xlabel("Time")
 plt.ylabel("MFCC")
+plt.title("{} MFCC".format(genreCapital))
 plt.colorbar()
 plt.show()
