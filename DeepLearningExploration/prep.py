@@ -2,7 +2,7 @@ import librosa, librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 
-genre = "rock"
+genre = "jazz"
 genreCapital = "Rock"
 file = "{}.00000.wav".format(genre)
 

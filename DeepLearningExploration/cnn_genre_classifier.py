@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 
 DATASET_PATH = "data.json"
 
-
 def load_data(dataset_path):
     with open(dataset_path, "r") as fp:
         data = json.load(fp)
